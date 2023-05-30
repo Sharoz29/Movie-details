@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+// import withPlugins from "next-compose-plugins";
+// import withImages from "next-images";
 
-module.exports = nextConfig
+const nextConfig = {
+  images: {
+    domains: ["image.tmdb.org"],
+  },
+};
+
+export default nextConfig;
