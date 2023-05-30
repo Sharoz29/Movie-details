@@ -2,6 +2,16 @@ import Image from "next/image";
 
 export const revalidate = 60;
 
+export const generateStaticParams = async () => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`
+  );
+  const response = await data.json();
+  return response.results.map((movie) => ({
+    movie: toString(movie.id),
+  }));
+};
+
 const MovieDetail = async ({ params }) => {
   const imagePath = "https://image.tmdb.org/t/p/original";
   const data = await fetch(
